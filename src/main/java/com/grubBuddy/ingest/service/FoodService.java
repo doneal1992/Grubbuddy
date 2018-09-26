@@ -2,7 +2,6 @@ package com.grubBuddy.ingest.service;
 
 import com.grubBuddy.ingest.api.FoodListApi;
 import com.grubBuddy.ingest.enums.FoodApiListType;
-import com.grubBuddy.ingest.constants.MongoConstants;
 import com.grubBuddy.ingest.dao.FoodDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,11 +18,11 @@ public class FoodService {
     private FoodDAO foodDAO;
 
     public void syncFoodsDatabase() throws InterruptedException {
-        stageTable(FoodApiListType.Food, MongoConstants.FoodComposition.FOODS);
-        stageTable(FoodApiListType.Nutrient, MongoConstants.FoodComposition.NUTRIENTS);
-    }
+        stageCollection(FoodApiListType.Food);
+        stageCollection(FoodApiListType.Nutrient);
+    }   
 
-    private void stageTable(FoodApiListType foodApiType, String collection) throws InterruptedException {
+    private void stageCollection(FoodApiListType foodApiType) throws InterruptedException {
         int page = 0;
         int take = 500;
         final boolean[] isDone = {false};
@@ -39,7 +38,7 @@ public class FoodService {
                                 return null;
                             }
                             return x.list.foodItems;
-                        }), collection)
+                        }), foodApiType.getMongoCollection())
                         .doOnComplete(() -> inProcess[0] = inProcess[0] - 1)
                         .doOnError(err -> isDone[0] = true)
                         .subscribeOn(Schedulers.parallel())
