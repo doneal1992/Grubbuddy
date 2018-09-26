@@ -7,7 +7,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 @Component
-public class FoodListApi {
+public class FoodCompositionApi {
 
     @Value("${food-composition-base-url}")
     private String baseUrl;
@@ -15,14 +15,14 @@ public class FoodListApi {
     @Value("${food-composition-api-key}")
     private String apiKey;
 
-    public Mono<FoodApiResponse> getFoods(int total, int page) {
+    public Mono<FoodApiResponse> getFoodItems(int total, int page, String listType) {
         return WebClient
                 .create(baseUrl)
                 .get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/list")
                         .queryParam("format", "json")
-                        .queryParam("lt", "f")
+                        .queryParam("lt", listType)
                         .queryParam("sort", "n")
                         .queryParam("max", total)
                         .queryParam("offset", page )
