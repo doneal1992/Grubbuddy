@@ -15,20 +15,19 @@ public class FoodListApi {
     @Value("${food-composition-api-key}")
     private String apiKey;
 
-    public Mono<FoodApiResponse> getFoods(int total, int page) {
+    public Mono<FoodApiResponse> getList(int total, int page, String type) {
         return WebClient
                 .create(baseUrl)
                 .get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/list")
                         .queryParam("format", "json")
-                        .queryParam("lt", "f")
+                        .queryParam("lt", type)
                         .queryParam("sort", "n")
                         .queryParam("max", total)
                         .queryParam("offset", page )
                         .queryParam("api_key", apiKey)
                         .build())
                 .retrieve().bodyToMono(FoodApiResponse.class);
-
     }
 }
