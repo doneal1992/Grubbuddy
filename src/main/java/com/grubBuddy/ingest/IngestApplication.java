@@ -1,5 +1,6 @@
 package com.grubBuddy.ingest;
 
+import com.grubBuddy.ingest.constants.MongoConstants;
 import com.grubBuddy.ingest.service.FoodService;
 import com.mongodb.reactivestreams.client.MongoClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class IngestApplication {
 
 	@Bean
 	public ReactiveMongoTemplate reactiveFoodTemplate() {
-		ReactiveMongoTemplate template = new ReactiveMongoTemplate(mongoClient, "FoodComposition");
+		ReactiveMongoTemplate template = new ReactiveMongoTemplate(mongoClient, MongoConstants.FOOD_COMPOSITION);
 
 		return template;
 	}

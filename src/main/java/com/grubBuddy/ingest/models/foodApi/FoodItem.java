@@ -14,8 +14,6 @@ import java.util.Map;
         "id",
         "name"
 })
-
-@Document(collection = "foods")
 public class FoodItem implements Serializable
 {
 
