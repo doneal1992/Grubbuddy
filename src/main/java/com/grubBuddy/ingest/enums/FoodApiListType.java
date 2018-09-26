@@ -4,7 +4,7 @@ import com.grubBuddy.ingest.constants.MongoConstants;
 
 public enum FoodApiListType {
     Food("f", MongoConstants.FoodComposition.FOODS),
-    Nutrient("n",MongoConstants.FoodComposition.NUTRIENTS);
+    Nutrient("n", MongoConstants.FoodComposition.NUTRIENTS);
 
     private String type;
     private String mongoCollection;
