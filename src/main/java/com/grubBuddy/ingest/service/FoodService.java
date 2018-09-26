@@ -21,7 +21,6 @@ public class FoodService {
     public void syncFoodsDatabase() throws InterruptedException {
         stageTable(FoodApiConstants.List.FOOD,MongoCollections.FoodCompositions.FOODS);
         stageTable(FoodApiConstants.List.NUTRIENT,MongoCollections.FoodCompositions.NUTRIENTS);
-
     }
 
     private void stageTable(String foodApiType, String collection) throws InterruptedException {
@@ -29,6 +28,7 @@ public class FoodService {
         int take = 500;
         final boolean[] isDone = {false};
         final int[] inProcess = {0};
+
         while (!isDone[0]) {
             if (inProcess[0] != 5) {
                 inProcess[0] = inProcess[0] + 1;

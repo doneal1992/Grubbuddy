@@ -14,7 +14,6 @@ import java.util.Map;
         "id",
         "name"
 })
-
 public class FoodItem implements Serializable
 {
 
