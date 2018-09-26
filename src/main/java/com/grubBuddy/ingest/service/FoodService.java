@@ -18,9 +18,8 @@ public class FoodService {
     @Autowired
     private FoodDAO foodDAO;
 
-
     public void syncFoodsDatabase() throws InterruptedException {
-        //stageTable(FoodApiListType.Food, MongoConstants.FoodComposition.FOODS);
+        stageTable(FoodApiListType.Food, MongoConstants.FoodComposition.FOODS);
         stageTable(FoodApiListType.Nutrient, MongoConstants.FoodComposition.NUTRIENTS);
     }
 
