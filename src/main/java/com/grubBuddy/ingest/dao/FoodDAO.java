@@ -15,7 +15,7 @@ public class FoodDAO {
     @Autowired
     ReactiveMongoTemplate reactiveFoodTemplate;
 
-    public Flux<FoodItem> insertMany(Mono<List<FoodItem>> foodItems) {
-        return this.reactiveFoodTemplate.insertAll(foodItems);
+    public Flux<FoodItem> insertMany(Mono<List<FoodItem>> foodItems, String collection) {
+        return this.reactiveFoodTemplate.insertAll(foodItems,collection);
     }
 }
