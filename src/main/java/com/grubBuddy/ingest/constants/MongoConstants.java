@@ -1,10 +1,10 @@
 package com.grubBuddy.ingest.constants;
 
-public class MongoCollections {
+public class MongoConstants {
 
-    public static final String FOOD_COMPOSITIONS = "FoodComposition";
+    public static final String FOOD_COMPOSITION = "FoodComposition";
 
-    public class FoodCompositions {
+    public class FoodComposition {
         public static final String FOODS = "foods";
         public static final String NUTRIENTS = "nutrients";
     }
