@@ -19,7 +19,7 @@ public class FoodService {
 
 
     public void syncFoodsDatabase() throws InterruptedException {
-       // stageTable(FoodApiConstants.List.FOOD,MongoCollections.FoodCompositions.FOODS);
+        stageTable(FoodApiConstants.List.FOOD,MongoCollections.FoodCompositions.FOODS);
         stageTable(FoodApiConstants.List.NUTRIENT,MongoCollections.FoodCompositions.NUTRIENTS);
 
     }
